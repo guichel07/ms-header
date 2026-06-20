@@ -20,7 +20,7 @@ describe('Header', () => {
     header.render(mockedEntreprise, mockedSeller);
 
     expect(bodyHeader.querySelector('.wordmark')?.innerHTML).toContain(
-      `${mockedEntreprise.firstName} <span>${mockedEntreprise.secondName}</span>`
+      `${mockedEntreprise.firstName} <em>${mockedEntreprise.secondName}</em>`
     );
 
     expect(bodyHeader.querySelector('.name')?.textContent).toBe(
