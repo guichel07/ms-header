@@ -1,3 +1,6 @@
+import type { Entreprise, Seller } from './model';
+import { injectSvgToContainer } from './utils';
+
 export class Header {
   private el: HTMLElement;
 
@@ -5,7 +8,7 @@ export class Header {
     this.el = mountPoint;
   }
 
-  render(): void {
+  render(entreprise: Entreprise, seller: Seller): void {
     this.el.innerHTML = `
       <header class="app-header">
         <div class="brand-row">
@@ -15,24 +18,27 @@ export class Header {
                   stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="50" cy="25" r="7" fill="#FF6B35"/>
           </svg>
-          <div class="wordmark">Maman <span>Solution</span></div>
+          <div class="wordmark">${entreprise.firstName} <span>${entreprise.secondName}</span></div>
         </div>
 
         <div class="header-main">
           <div class="seller">
-            <div class="avatar">AM</div>
+            <div class="avatar">${seller.stringAvatar}</div>
             <div>
-              <div class="name">Amina M.</div>
-              <div class="role">Vendeur · Zone Nord</div>
+              <div class="name">${seller.name}</div>
+              <div class="role">${seller.role}</div>
             </div>
           </div>
           <div class="daily-badge">
             <span class="lab">VENTES DU JOUR</span>
-            <span class="amt">47 500 F</span>
+            <span class="amt">${seller.dailySalesTotal} F</span>
           </div>
           <span class="logout-link">Déconnexion</span>
         </div>
       </header>
       `;
+    const avatarDiv: HTMLElement | null = document.querySelector('.avatar');
+    if (seller.svgAvatar && avatarDiv)
+      injectSvgToContainer(seller.svgAvatar, avatarDiv);
   }
 }
