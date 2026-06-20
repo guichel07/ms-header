@@ -1,24 +1,40 @@
-// @vitest-environment jsdom
+// // @vitest-environment jsdom
 import { describe, test, expect, beforeEach } from 'vitest';
 import { Header } from './header';
+import { mockedEntreprise, mockedSeller } from './constantes';
 
 describe('Header', () => {
-  let headerDiv: HTMLElement;
+  let bodyHeader: HTMLDivElement;
+  let header: Header;
 
   beforeEach(() => {
     document.body.innerHTML = '';
-    headerDiv = document.createElement('div');
-    document.body.appendChild(headerDiv);
+
+    bodyHeader = document.createElement('div');
+    document.body.appendChild(bodyHeader);
+
+    header = new Header(bodyHeader);
   });
 
-  test('should render correctly', () => {
-    const myHeader = new Header(headerDiv);
+  test('Should have exact infos', () => {
+    header.render(mockedEntreprise, mockedSeller);
 
-    myHeader.render();
+    expect(bodyHeader.querySelector('.wordmark')?.innerHTML).toContain(
+      `${mockedEntreprise.firstName} <span>${mockedEntreprise.secondName}</span>`
+    );
 
-    const headerElement = headerDiv.querySelector('header');
+    expect(bodyHeader.querySelector('.name')?.textContent).toBe(
+      mockedSeller.name
+    );
 
-    expect(headerElement).not.toBeNull();
-    expect(headerElement!.innerHTML).toContain('Mon Header');
+    expect(bodyHeader.querySelector('.role')?.textContent).toBe(
+      mockedSeller.role
+    );
+
+    expect(bodyHeader.querySelector('.amt')?.textContent).toContain(
+      `${mockedSeller.dailySalesTotal} F`
+    );
+
+    expect(bodyHeader.querySelector('.avatar svg')).not.toBeNull();
   });
 });
