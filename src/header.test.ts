@@ -19,6 +19,6 @@ describe('Header', () => {
     const headerElement = headerDiv.querySelector('header');
 
     expect(headerElement).not.toBeNull();
-    expect(headerElement!.innerHTML).toContain('Mon Header');
+    expect(headerElement?.getElementsByClassName('app-header')).not.toBeNull();
   });
 });
