@@ -1,7 +1,7 @@
 // // @vitest-environment jsdom
 import { describe, test, expect, beforeEach } from 'vitest';
-import { Header } from './header';
-import { mockedEntreprise, mockedSeller } from './constantes';
+import { Header } from '.';
+import { mockedEntreprise, mockedSeller } from '../constantes';
 
 describe('Header', () => {
   let bodyHeader: HTMLDivElement;

@@ -1,14 +1,17 @@
 {
   "name": "tek-ms-header",
   "private": false,
-  "version": "v1.0.10",
+  "version": "v1.0.11",
   "type": "module",
+  "main": "./dist/ms-header.js",
+  "module": "./dist/ms-header.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build && tsc -p tsconfig.json",
     "test": "npx vitest run",
     "test -- --coverage": "npx vitest run --coverage",
     "preview": "vite preview",

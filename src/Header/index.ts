@@ -1,5 +1,5 @@
-import type { Entreprise, Seller } from './model';
-import { injectSvgToContainer, paintStamps } from './utils';
+import type { Entreprise, Seller } from '../model';
+import { injectSvgToContainer, paintStamps } from '../utils';
 
 export class Header {
   private el: HTMLElement;

@@ -1,6 +1,6 @@
 import 'tek-ms-ds/dist/style.css';
-import { Header } from './header';
 import { mockedEntreprise, mockedSeller } from './constantes';
+import { Header } from './Header';
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
 
