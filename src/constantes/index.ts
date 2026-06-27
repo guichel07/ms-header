@@ -1,4 +1,4 @@
-import type { Entreprise, Seller } from '../model';
+import type { Entreprise, Profil } from '../model';
 
 export const mockedEntreprise: Entreprise = {
   firstName: 'Maman',
@@ -11,11 +11,11 @@ export const mockedEntreprise: Entreprise = {
     <circle cx="50" cy="25" r="7" fill="#FF6B35"/>
   </svg>`,
 };
-export const mockedSeller: Seller = {
+export const mockedSeller: Profil = {
   name: 'Tesia M.',
   role: 'Vendeur · Zone Nord',
   dailySalesTotal: 5660,
-  stringAvatar: 'TS',
+  tag: 'TS',
   svgAvatar: `
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
     <circle cx="12" cy="8" r="4"/>

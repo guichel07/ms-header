@@ -1,4 +1,4 @@
-import type { Entreprise, Seller } from '../model';
+import type { Entreprise, Profil } from '../model';
 import { injectSvgToContainer, paintStamps } from '../utils';
 
 export class Header {
@@ -8,7 +8,7 @@ export class Header {
     this.el = mountPoint;
   }
 
-  render(entreprise: Entreprise, seller: Seller): void {
+  render(entreprise: Entreprise, seller: Profil): void {
     this.el.innerHTML = `
       <header class="app-header">
         <div class="brand-row">
@@ -17,7 +17,7 @@ export class Header {
         </div>
         <div class="header-right">
           <div class="seller">
-            <div class="avatar">${seller.stringAvatar}</div>
+            <div class="avatar">${seller.tag}</div>
             <div class="seller-text">
             <div class="name">${seller.name}</div>
             <div class="role">${seller.role}</div>

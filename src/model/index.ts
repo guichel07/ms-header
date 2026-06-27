@@ -4,10 +4,10 @@ export interface Entreprise {
   icone?: string;
 }
 
-export interface Seller {
+export interface Profil {
   name: string;
   role: string;
   dailySalesTotal: number;
   svgAvatar?: string;
-  stringAvatar: string;
+  tag: string;
 }
