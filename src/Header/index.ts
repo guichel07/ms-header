@@ -8,7 +8,12 @@ export class Header {
     this.el = mountPoint;
   }
 
-  render(entreprise: Entreprise, seller: Profil): void {
+  render(
+    entreprise: Entreprise,
+    seller: Profil,
+    logout?: () => void,
+    openSectionMenu?: () => void
+  ): void {
     this.el.innerHTML = `
       <header class="app-header">
         <div class="brand-row">
@@ -27,13 +32,21 @@ export class Header {
             <span class="lab">VENTES DU JOUR</span>
             <span class="amt">${seller.dailySalesTotal} F</span>
           </div>
-          <span class="logout-link" onclick="logout()">Déconnexion</span>
+          <span class="logout-link" id="logout-link" >Déconnexion</span>
           <button class="icon-btn section-menu-btn" id="section-menu-btn" onclick="openSectionMenu()" aria-label="Menu">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           </button>
         </div>
       </header>
       `;
+    this.el.querySelector('#logout-link')?.addEventListener('click', () => {
+      logout?.();
+    });
+    this.el
+      .querySelector('#section-menu-btn')
+      ?.addEventListener('click', () => {
+        openSectionMenu?.();
+      });
     const avatarDiv: HTMLElement | null = document.querySelector('.avatar');
     if (seller.svgAvatar && avatarDiv)
       injectSvgToContainer(seller.svgAvatar, avatarDiv);
